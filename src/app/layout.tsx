@@ -7,10 +7,13 @@ const RootLayout = ({ children }: {
   children: React.ReactNode
 }) => {
   return (
-    <div>
-      Rootlayout
-      {children}
-    </div>
+    <html lang="en">
+      <head></head>
+      <body>
+        Rootlayout
+        {children}
+      </body>
+    </html>
   )
 }
 
