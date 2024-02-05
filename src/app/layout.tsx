@@ -1,3 +1,6 @@
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
+
 export const metadata = {
   title: 'Next Application',
   description: 'A Basic Next.js Test Application'
@@ -8,10 +11,10 @@ const RootLayout = ({ children }: {
 }) => {
   return (
     <html lang="en">
-      <head></head>
       <body>
-        Rootlayout
+        <Header/>
         {children}
+        <Footer/>
       </body>
     </html>
   )

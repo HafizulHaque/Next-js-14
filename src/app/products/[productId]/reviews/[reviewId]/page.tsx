@@ -1,11 +1,29 @@
 import { notFound } from "next/navigation"
+import { Metadata } from "next"
 
-const ProductReviewPage = ({ params }: {
+type PropTypes = {
   params: {
     productId: string,
     reviewId: string
   }
-}) => {
+}
+
+export const generateMetadata = async ({ params }: PropTypes): Promise<Metadata> => {
+
+  const reviewText = await new Promise((resolve) => {
+    setTimeout(()=>{
+      resolve(+params.productId*1000+params.reviewId)
+    }, 2000)
+  })
+  return(
+    {
+      title: `Review - ${reviewText}`,
+      description: `Showing Review for Product with id: ${params.productId}`
+    }
+  )
+}
+
+const ProductReviewPage = ({ params }: PropTypes) => {
   if(+params.reviewId > 100){
     return notFound();
   }
