@@ -1,5 +1,5 @@
-import { notFound } from "next/navigation"
 import { Metadata } from "next"
+import ReviewPageNav from "./review-page-nav"
 
 type PropTypes = {
   params: {
@@ -9,7 +9,6 @@ type PropTypes = {
 }
 
 export const generateMetadata = async ({ params }: PropTypes): Promise<Metadata> => {
-
   const reviewText = await new Promise((resolve) => {
     setTimeout(()=>{
       resolve(+params.productId*1000+params.reviewId)
@@ -24,12 +23,16 @@ export const generateMetadata = async ({ params }: PropTypes): Promise<Metadata>
 }
 
 const ProductReviewPage = ({ params }: PropTypes) => {
-  if(+params.reviewId > 100){
-    return notFound();
-  }
+
+  let num = Math.floor(Math.random() * 10)
+  // if(num < 5){
+  //   throw new Error('Error loading page');
+  // }
+
   return (
     <div>
       <p>Showing review #{params.reviewId} of Product #{params.productId}</p>
+      <ReviewPageNav/>
     </div>
   )
 }
